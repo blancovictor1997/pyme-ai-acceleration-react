@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import PainPoints from './components/PainPoints';
 import Services from './components/Services';
 import Features from './components/Features';
 import Marketplace from './components/Marketplace';
@@ -42,6 +43,7 @@ function App() {
       {page === 'home' ? (
         <main>
           <Hero />
+          <PainPoints />
           <Services />
           <Features />
           <Process />
