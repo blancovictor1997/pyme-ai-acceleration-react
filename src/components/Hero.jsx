@@ -13,6 +13,14 @@ export default function Hero() {
                         <a href="#contacto" className="btn-primary">Diagnostica tu Pyme Gratis <ArrowRight size={18} /></a>
                         <a href="#servicios" className="btn-secondary">Ver Soluciones</a>
                     </div>
+
+                    <div className="hero-image-container" style={{ marginTop: '4rem', width: '100%', maxWidth: '1000px', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)' }}>
+                        <img
+                            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200"
+                            alt="Dashboard Inteligencia de Negocios"
+                            style={{ width: '100%', height: 'auto', display: 'block' }}
+                        />
+                    </div>
                 </div>
             </div>
         </section>

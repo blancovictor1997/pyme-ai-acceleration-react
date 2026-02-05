@@ -6,10 +6,11 @@ import Services from './components/Services';
 import Features from './components/Features';
 import Marketplace from './components/Marketplace';
 import Process from './components/Process';
-import Contact from './components/Contact';
+
 import Footer from './components/Footer';
 import Background from './components/Background';
 import AgentesPage from './components/AgentesPage';
+import ChatAssistant from './components/ChatAssistant';
 
 import { useScrollAnimation } from './hooks/useScrollAnimation';
 
@@ -47,7 +48,7 @@ function App() {
           <Services />
           <Features />
           <Process />
-          <Contact />
+
         </main>
       ) : (
         <AgentesPage />
@@ -55,6 +56,7 @@ function App() {
 
 
       <Footer />
+      <ChatAssistant />
     </>
   );
 }

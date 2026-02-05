@@ -8,7 +8,8 @@ const industries = [
         icon: Car,
         title: 'Agentes de venta 24/7 y gestión de inventario predictivo.',
         impact: 'No pierdas ni un lead, incluso fuera de horario.',
-        image: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&q=80&w=800', // Car/Industry image
+        image: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&q=80&w=800',
+        video: 'https://cdn.coverr.co/videos/coverr-driving-a-car-overhead-view-4560/1080p.mp4',
         link: '#'
     },
     {
@@ -17,7 +18,8 @@ const industries = [
         icon: Scale,
         title: 'Automatización de citas y triaje inteligente de consultas.',
         impact: 'Reduce el ausentismo y filtra consultas básicas automáticamente.',
-        image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=800', // Medical/Legal image
+        image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=800',
+        video: 'https://cdn.coverr.co/videos/coverr-law-books-and-scales-of-justice-5546/1080p.mp4',
         link: '#'
     },
     {
@@ -26,7 +28,8 @@ const industries = [
         icon: Utensils,
         title: 'Reservas automáticas y marketing personalizado para clientes.',
         impact: 'Llena tus mesas en horas valle con promociones IA.',
-        image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800', // Restaurant image
+        image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800',
+        video: 'https://cdn.coverr.co/videos/coverr-chef-preparing-food-in-kitchen-5377/1080p.mp4',
         link: '#'
     },
     {
@@ -35,13 +38,22 @@ const industries = [
         icon: Building2,
         title: 'Seguimiento de obras y cualificación de prospectos inmobiliarios.',
         impact: 'Vende más rápido identificando al comprador ideal al instante.',
-        image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800', // Construction image
+        image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800',
+        video: 'https://cdn.coverr.co/videos/coverr-construction-site-with-cranes-4536/1080p.mp4',
         link: '#'
     }
 ];
 
 export default function Services() {
     const [activeTab, setActiveTab] = useState(industries[0]);
+
+    // Handle video transition smoothly
+    const [key, setKey] = useState(0);
+
+    const handleTabChange = (industry) => {
+        setActiveTab(industry);
+        setKey(prev => prev + 1); // Force re-render of video to ensure autoplay works on source change
+    };
 
     return (
         <section id="servicios" className="services">
@@ -56,7 +68,7 @@ export default function Services() {
                         <button
                             key={industry.id}
                             className={`hub-tab-btn ${activeTab.id === industry.id ? 'active' : ''}`}
-                            onClick={() => setActiveTab(industry)}
+                            onClick={() => handleTabChange(industry)}
                         >
                             <industry.icon size={18} />
                             {industry.name}
@@ -66,14 +78,23 @@ export default function Services() {
 
                 <div className="hub-content-card" data-animate="fade-in">
                     <div className="hub-image">
-                        <img src={activeTab.image} alt={activeTab.name} />
+                        <video
+                            key={key}
+                            src={activeTab.video}
+                            poster={activeTab.image}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        />
                         <div style={{
                             position: 'absolute',
                             top: 0, left: 0, width: '100%', height: '100%',
                             background: 'linear-gradient(to top, rgba(0,0,0,0.6), transparent)',
-                            display: 'flex', alignItems: 'flex-end', padding: '2rem'
+                            display: 'flex', alignItems: 'flex-end', padding: '2rem',
+                            pointerEvents: 'none'
                         }}>
-                            {/* Optional overlay content if needed */}
                         </div>
                     </div>
                     <div className="hub-details">

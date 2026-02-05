@@ -52,7 +52,7 @@ export default function Header({ page, setPage }) {
     return (
         <header className={scrolled ? 'scrolled' : ''}>
             <nav className="container">
-                <a href="#" className="logo" onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}><span className="gradient-text">Pyme</span> AI</a>
+                <a href="#" className="logo" onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}><span className="gradient-text">REDPY</span> AI</a>
 
                 <div className="nav-links" style={window.innerWidth <= 900 ? mobileNavStyles : undefined}>
                     {page === 'home' ? (

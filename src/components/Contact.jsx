@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, Send } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 
 export default function Contact() {
     return (
@@ -17,30 +17,7 @@ export default function Contact() {
                     </ul>
                 </div>
 
-                <form className="glass-form" data-animate="slide-left" onSubmit={(e) => e.preventDefault()}>
-                    <div className="form-group">
-                        <label>Nombre</label>
-                        <input type="text" placeholder="Tu nombre" />
-                    </div>
-                    <div className="form-group">
-                        <label>Empresa</label>
-                        <input type="text" placeholder="Nombre de tu Pyme" />
-                    </div>
-                    <div className="form-group">
-                        <label>Correo Electrónico</label>
-                        <input type="email" placeholder="tucorreo@empresa.com" />
-                    </div>
-                    <div className="form-group">
-                        <label>Interés Principal</label>
-                        <select>
-                            <option>Automatización</option>
-                            <option>Asistentes Virtuales</option>
-                            <option>Analytics</option>
-                            <option>Otro</option>
-                        </select>
-                    </div>
-                    <button type="submit" className="btn-submit">Solicitar Auditoría <Send size={18} /></button>
-                </form>
+                {/* Form removed as requested */}
             </div>
         </section>
     );
