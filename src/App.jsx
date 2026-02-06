@@ -4,12 +4,12 @@ import Hero from './components/Hero';
 import PainPoints from './components/PainPoints';
 import Services from './components/Services';
 import Features from './components/Features';
-import Marketplace from './components/Marketplace';
+
 import Process from './components/Process';
 
 import Footer from './components/Footer';
 import Background from './components/Background';
-import AgentesPage from './components/AgentesPage';
+
 import ChatAssistant from './components/ChatAssistant';
 import ContactModal from './components/ContactModal';
 
