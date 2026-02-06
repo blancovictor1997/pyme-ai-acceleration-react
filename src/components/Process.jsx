@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Code, Rocket } from 'lucide-react';
 
-export default function Process() {
+export default function Process({ openModal }) {
     return (
         <section id="proceso" className="process">
             <div className="container">
@@ -42,7 +42,7 @@ export default function Process() {
                 <div className="process-cta-box" data-animate="scale-up">
                     <h3>¿Listo para empezar tu transformación?</h3>
                     <p>No esperes a que la competencia automatice antes que tú.</p>
-                    <a href="#contacto" className="btn-primary btn-large">Agenda una Asesoría Gratuita</a>
+                    <a href="#contacto" className="btn-primary btn-large" onClick={(e) => { e.preventDefault(); openModal(); }}>Agenda una Asesoría Gratuita</a>
                 </div>
             </div>
         </section>

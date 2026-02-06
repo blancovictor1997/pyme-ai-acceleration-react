@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 
-export default function Header({ page, setPage }) {
+export default function Header({ page, setPage, openModal }) {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -60,12 +60,12 @@ export default function Header({ page, setPage }) {
                             <a href="#servicios" onClick={() => setMobileMenuOpen(false)}>Soluciones</a>
                             <a href="#nosotros" onClick={() => setMobileMenuOpen(false)}>Por qué REDPY</a>
                             <a href="#proceso" onClick={() => setMobileMenuOpen(false)}>Cómo funciona</a>
-                            <a href="#contacto" className="btn-primary" onClick={() => setMobileMenuOpen(false)}>Contacto WhatsApp</a>
+                            <a href="#contacto" className="btn-primary" onClick={(e) => { e.preventDefault(); setMobileMenuOpen(false); openModal(); }}>Contacto WhatsApp</a>
                         </>
                     ) : (
                         <>
                             <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}>Volver al Inicio</a>
-                            <a href="#contacto" className="btn-primary" onClick={(e) => { e.preventDefault(); handleNavClick('home', '#contacto'); }}>Contacto WhatsApp</a>
+                            <a href="#contacto" className="btn-primary" onClick={(e) => { e.preventDefault(); setMobileMenuOpen(false); openModal(); }}>Contacto WhatsApp</a>
                         </>
                     )}
                 </div>

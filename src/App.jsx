@@ -11,11 +11,16 @@ import Footer from './components/Footer';
 import Background from './components/Background';
 import AgentesPage from './components/AgentesPage';
 import ChatAssistant from './components/ChatAssistant';
+import ContactModal from './components/ContactModal';
 
 import { useScrollAnimation } from './hooks/useScrollAnimation';
 
 function App() {
   const [page, setPage] = useState('home');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   // Mouse move effect hook
   useEffect(() => {
@@ -39,24 +44,23 @@ function App() {
   return (
     <>
       <Background />
-      <Header page={page} setPage={setPage} />
+      <Header page={page} setPage={setPage} openModal={openModal} />
 
       {page === 'home' ? (
         <main>
-          <Hero />
+          <Hero openModal={openModal} />
           <PainPoints />
           <Services />
           <Features />
-          <Process />
-
+          <Process openModal={openModal} />
         </main>
       ) : (
         <AgentesPage />
       )}
 
-
-      <Footer />
       <ChatAssistant />
+      <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+      <Footer />
     </>
   );
 }
