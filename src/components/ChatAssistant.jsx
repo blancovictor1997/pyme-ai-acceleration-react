@@ -1,16 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
 
-export default function ChatAssistant() {
-    const [isOpen, setIsOpen] = useState(false);
+export default function ChatAssistant({ isOpen, toggleChat }) {
     const [messages, setMessages] = useState([
         { id: 1, text: "¡Hola! Soy el asistente virtual de REDPY. ¿En qué puedo ayudarte a potenciar tu Pyme hoy?", sender: 'bot' }
     ]);
     const [inputValue, setInputValue] = useState("");
     const [isTyping, setIsTyping] = useState(false);
     const messagesEndRef = useRef(null);
-
-    const toggleChat = () => setIsOpen(!isOpen);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });

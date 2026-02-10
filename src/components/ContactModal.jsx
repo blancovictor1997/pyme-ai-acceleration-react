@@ -44,14 +44,14 @@ export default function ContactModal({ isOpen, onClose }) {
 
                 <div className="modal-body">
                     <div className="modal-left">
-                        <h3>¿Listo para <span className="gradient-text">Evolucionar?</span></h3>
+                        <h3>¿Listo/a para <span className="gradient-text">Evolucionar?</span></h3>
                         <p>Agenda una consultoría gratuita de 15 minutos. Analizaremos tu negocio y te diremos exactamente dónde la IA puede generar valor inmediato.</p>
 
                         <div className="modal-features-list">
                             <div className="modal-feature-item">
                                 <div className="modal-feature-icon"><CheckCircle /></div>
                                 <div className="modal-feature-text">
-                                    <h4>Auditoría Inicial Gratuita</h4>
+                                    <h4>Evaluación Inicial Gratuita</h4>
                                     <p>Evaluamos tu estado actual sin costo.</p>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@ export default function ContactModal({ isOpen, onClose }) {
                     <div className="modal-right">
                         <form onSubmit={handleSubmit} className="modal-form">
                             <div className="modal-form-group">
-                                <label htmlFor="name">Nombre</label>
+                                <label htmlFor="name">Nombre Pyme</label>
                                 <input
                                     type="text"
                                     id="name"
@@ -87,18 +87,7 @@ export default function ContactModal({ isOpen, onClose }) {
                                 />
                             </div>
 
-                            <div className="modal-form-group">
-                                <label htmlFor="company">Empresa</label>
-                                <input
-                                    type="text"
-                                    id="company"
-                                    name="company"
-                                    placeholder="Nombre de tu Pyme"
-                                    value={formData.company}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
+
 
                             <div className="modal-form-group">
                                 <label htmlFor="email">Correo Electrónico</label>
@@ -121,10 +110,10 @@ export default function ContactModal({ isOpen, onClose }) {
                                     value={formData.interest}
                                     onChange={handleChange}
                                 >
-                                    <option value="automation">Automatización de Procesos</option>
-                                    <option value="chatbots">Asistentes Virtuales (Chatbots)</option>
-                                    <option value="analysis">Análisis de Datos</option>
-                                    <option value="consulting">Consultoría General</option>
+                                    <option value="automation">Automotoras y Maquinaria</option>
+                                    <option value="chatbots">Salud y Abogados</option>
+                                    <option value="analysis">Gastronomía y Turismo</option>
+                                    <option value="consulting">Construcción e Inmobiliaria</option>
                                 </select>
                             </div>
 

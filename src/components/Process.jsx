@@ -40,7 +40,7 @@ export default function Process({ openModal }) {
                 </div>
 
                 <div className="process-cta-box" data-animate="scale-up">
-                    <h3>¿Listo para empezar tu transformación?</h3>
+                    <h3>¿Listo/a para empezar tu transformación?</h3>
                     <p>No esperes a que la competencia automatice antes que tú.</p>
                     <a href="#contacto" className="btn-primary btn-large" onClick={(e) => { e.preventDefault(); openModal(); }}>Agenda una Asesoría Gratuita</a>
                 </div>

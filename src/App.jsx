@@ -22,6 +22,11 @@ function App() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  // Chat Assistant State
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const toggleChat = () => setIsChatOpen(!isChatOpen);
+  const openChat = () => setIsChatOpen(true);
+
   // Mouse move effect hook
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -44,7 +49,7 @@ function App() {
   return (
     <>
       <Background />
-      <Header page={page} setPage={setPage} openModal={openModal} />
+      <Header page={page} setPage={setPage} openModal={openModal} openChat={openChat} />
 
       {page === 'home' ? (
         <main>
@@ -58,7 +63,7 @@ function App() {
         <AgentesPage />
       )}
 
-      <ChatAssistant />
+      <ChatAssistant isOpen={isChatOpen} toggleChat={toggleChat} />
       <ContactModal isOpen={isModalOpen} onClose={closeModal} />
       <Footer />
     </>

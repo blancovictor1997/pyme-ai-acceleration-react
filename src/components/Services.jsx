@@ -9,37 +9,37 @@ const industries = [
         title: 'Agentes de venta 24/7 y gestión de inventario predictivo.',
         impact: 'No pierdas ni un lead, incluso fuera de horario.',
         image: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&q=80&w=800',
-        video: 'https://cdn.coverr.co/videos/coverr-driving-a-car-overhead-view-4560/1080p.mp4',
+        video: 'https://www.youtube.com/watch?v=Cj26b1CRTIg',
         link: '#'
     },
     {
         id: 'legal',
         name: 'Salud y Abogados',
         icon: Scale,
-        title: 'Automatización de citas y triaje inteligente de consultas.',
-        impact: 'Reduce el ausentismo y filtra consultas básicas automáticamente.',
+        title: 'Asistentes para agendamiento y resumen inteligente de expedientes.',
+        impact: 'Prioriza a tus clientes, no al papeleo.',
         image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=800',
-        video: 'https://cdn.coverr.co/videos/coverr-law-books-and-scales-of-justice-5546/1080p.mp4',
+        video: 'https://assets.mixkit.co/videos/preview/mixkit-lawyer-signing-documents-4261-large.mp4',
         link: '#'
     },
     {
         id: 'gastronomia',
         name: 'Gastronomía y Turismo',
         icon: Utensils,
-        title: 'Reservas automáticas y marketing personalizado para clientes.',
-        impact: 'Llena tus mesas en horas valle con promociones IA.',
+        title: 'Bots de reserva en lenguaje natural y optimización de menú/precios.',
+        impact: 'Ocupación máxima y stock bajo control.',
         image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800',
-        video: 'https://cdn.coverr.co/videos/coverr-chef-preparing-food-in-kitchen-5377/1080p.mp4',
+        video: 'https://assets.mixkit.co/videos/preview/mixkit-chef-preparing-a-dish-4187-large.mp4',
         link: '#'
     },
     {
         id: 'construccion',
         name: 'Construcción e Inmobiliaria',
         icon: Building2,
-        title: 'Seguimiento de obras y cualificación de prospectos inmobiliarios.',
-        impact: 'Vende más rápido identificando al comprador ideal al instante.',
+        title: 'Calificación automática de prospectos y visualización de datos de obra.',
+        impact: 'Acelera el cierre de ventas de departamentos.',
         image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800',
-        video: 'https://cdn.coverr.co/videos/coverr-construction-site-with-cranes-4536/1080p.mp4',
+        video: 'https://assets.mixkit.co/videos/preview/mixkit-construction-site-at-sunset-4309-large.mp4',
         link: '#'
     }
 ];
@@ -53,6 +53,17 @@ export default function Services() {
     const handleTabChange = (industry) => {
         setActiveTab(industry);
         setKey(prev => prev + 1); // Force re-render of video to ensure autoplay works on source change
+    };
+
+    const getYouTubeId = (url) => {
+        if (!url) return null;
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+        const match = url.match(regExp);
+        return (match && match[2].length === 11) ? match[2] : null;
+    };
+
+    const isYouTube = (url) => {
+        return url && (url.includes('youtube.com') || url.includes('youtu.be'));
     };
 
     return (
@@ -78,16 +89,30 @@ export default function Services() {
 
                 <div className="hub-content-card" data-animate="fade-in">
                     <div className="hub-image">
-                        <video
-                            key={key}
-                            src={activeTab.video}
-                            poster={activeTab.image}
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                        />
+                        {isYouTube(activeTab.video) ? (
+                            <iframe
+                                key={key}
+                                width="100%"
+                                height="100%"
+                                src={`https://www.youtube.com/embed/${getYouTubeId(activeTab.video)}?autoplay=1&mute=1&controls=0&loop=1&playlist=${getYouTubeId(activeTab.video)}&showinfo=0&rel=0`}
+                                title={activeTab.name}
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                style={{ width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
+                            ></iframe>
+                        ) : (
+                            <video
+                                key={key}
+                                src={activeTab.video}
+                                poster={activeTab.image}
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            />
+                        )}
                         <div style={{
                             position: 'absolute',
                             top: 0, left: 0, width: '100%', height: '100%',
